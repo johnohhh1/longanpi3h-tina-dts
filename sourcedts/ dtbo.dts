@@ -1,0 +1,243 @@
+/dts-v1/;
+
+/ {
+	compatible = "board_manufacturer,board_model";
+	board_id = <0x20000>;
+	board_rev = <0x20001>;
+	another_hw_information = "some_data";
+	soc_id = <0x68000000>;
+
+	fragment@1 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			#address-cells = <0x01>;
+			#size-cells = <0x00>;
+			no_suspend = <0x01>;
+			status = "okay";
+
+			pmu {
+				compatible = "x-powers,axp806";
+				reg = <0x36>;
+				linux,phandle = <0x02>;
+				phandle = <0x02>;
+
+				standby_param {
+					vcc-dram = <0x08>;
+					linux,phandle = <0x03>;
+					phandle = <0x03>;
+				};
+
+				regulators {
+
+					dcdca {
+						regulator-name = "axp806-dcdca";
+						regulator-min-microvolt = <0x927c0>;
+						regulator-max-microvolt = <0x173180>;
+						regulator-step-delay-us = <0x19>;
+						regulator-final-delay-us = <0x32>;
+						regulator-always-on;
+						linux,phandle = <0x01>;
+						phandle = <0x01>;
+					};
+
+					dcdcb {
+						regulator-name = "axp806-dcdcb";
+						regulator-min-microvolt = <0xf4240>;
+						regulator-max-microvolt = <0x26e8f0>;
+						regulator-step-delay-us = <0x19>;
+						regulator-final-delay-us = <0x32>;
+						linux,phandle = <0x04>;
+						phandle = <0x04>;
+					};
+
+					dcdcc {
+						regulator-name = "axp806-dcdcc";
+						regulator-min-microvolt = <0x927c0>;
+						regulator-max-microvolt = <0x173180>;
+						regulator-step-delay-us = <0x19>;
+						regulator-final-delay-us = <0x32>;
+						regulator-always-on;
+						linux,phandle = <0x05>;
+						phandle = <0x05>;
+					};
+
+					dcdcd {
+						regulator-name = "axp806-dcdcd";
+						regulator-min-microvolt = <0x927c0>;
+						regulator-max-microvolt = <0x325aa0>;
+						regulator-step-delay-us = <0x19>;
+						regulator-final-delay-us = <0x32>;
+						regulator-always-on;
+						linux,phandle = <0x06>;
+						phandle = <0x06>;
+					};
+
+					dcdce {
+						regulator-name = "axp806-dcdce";
+						regulator-min-microvolt = <0x10c8e0>;
+						regulator-max-microvolt = <0x33e140>;
+						regulator-step-delay-us = <0x19>;
+						regulator-final-delay-us = <0x32>;
+						linux,phandle = <0x07>;
+						phandle = <0x07>;
+					};
+
+					aldo1 {
+						regulator-name = "axp806-aldo1";
+						regulator-min-microvolt = <0x325aa0>;
+						regulator-max-microvolt = <0x325aa0>;
+						regulator-step-delay-us = <0x19>;
+						regulator-final-delay-us = <0x32>;
+						regulator-always-on;
+						linux,phandle = <0x08>;
+						phandle = <0x08>;
+					};
+
+					aldo2 {
+						regulator-name = "axp806-aldo2";
+						regulator-min-microvolt = <0x325aa0>;
+						regulator-max-microvolt = <0x325aa0>;
+						regulator-step-delay-us = <0x19>;
+						regulator-final-delay-us = <0x32>;
+						regulator-always-on;
+						linux,phandle = <0x09>;
+						phandle = <0x09>;
+					};
+
+					aldo3 {
+						regulator-name = "axp806-aldo3";
+						regulator-min-microvolt = <0x325aa0>;
+						regulator-max-microvolt = <0x325aa0>;
+						regulator-step-delay-us = <0x19>;
+						regulator-final-delay-us = <0x32>;
+						regulator-always-on;
+						linux,phandle = <0x0a>;
+						phandle = <0x0a>;
+					};
+
+					bldo1 {
+						regulator-name = "axp806-bldo1";
+						regulator-min-microvolt = <0x2bf20>;
+						regulator-max-microvolt = <0x1b7740>;
+						regulator-step-delay-us = <0x19>;
+						regulator-final-delay-us = <0x32>;
+						regulator-always-on;
+						linux,phandle = <0x0b>;
+						phandle = <0x0b>;
+					};
+
+					bldo2 {
+						regulator-name = "axp806-bldo2";
+						regulator-min-microvolt = <0xaae60>;
+						regulator-max-microvolt = <0x1cfde0>;
+						regulator-step-delay-us = <0x19>;
+						regulator-final-delay-us = <0x32>;
+						linux,phandle = <0x0c>;
+						phandle = <0x0c>;
+					};
+
+					bldo3 {
+						regulator-name = "axp806-bldo3";
+						regulator-min-microvolt = <0xaae60>;
+						regulator-max-microvolt = <0x1cfde0>;
+						regulator-step-delay-us = <0x19>;
+						regulator-final-delay-us = <0x32>;
+						linux,phandle = <0x0d>;
+						phandle = <0x0d>;
+					};
+
+					bldo4 {
+						regulator-name = "axp806-bldo4";
+						regulator-min-microvolt = <0xaae60>;
+						regulator-max-microvolt = <0x1cfde0>;
+						regulator-step-delay-us = <0x19>;
+						regulator-final-delay-us = <0x32>;
+						linux,phandle = <0x0e>;
+						phandle = <0x0e>;
+					};
+
+					cldo1 {
+						regulator-name = "axp806-cldo1";
+						regulator-min-microvolt = <0xaae60>;
+						regulator-max-microvolt = <0x325aa0>;
+						regulator-step-delay-us = <0x19>;
+						regulator-final-delay-us = <0x32>;
+						linux,phandle = <0x0f>;
+						phandle = <0x0f>;
+					};
+
+					cldo2 {
+						regulator-name = "axp806-cldo2";
+						regulator-min-microvolt = <0xaae60>;
+						regulator-max-microvolt = <0x401640>;
+						regulator-step-delay-us = <0x19>;
+						regulator-final-delay-us = <0x32>;
+						linux,phandle = <0x10>;
+						phandle = <0x10>;
+					};
+
+					cldo3 {
+						regulator-name = "axp806-cldo3";
+						regulator-min-microvolt = <0xaae60>;
+						regulator-max-microvolt = <0x325aa0>;
+						regulator-step-delay-us = <0x19>;
+						regulator-final-delay-us = <0x32>;
+						linux,phandle = <0x11>;
+						phandle = <0x11>;
+					};
+
+					sw {
+						regulator-name = "axp806-sw";
+						linux,phandle = <0x12>;
+						phandle = <0x12>;
+					};
+				};
+			};
+		};
+	};
+
+	fragment@2 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			cpu-supply = <0x01>;
+		};
+	};
+
+	__symbols__ {
+		pmu0 = "/fragment@1/__overlay__/pmu";
+		standby_param = "/fragment@1/__overlay__/pmu/standby_param";
+		reg_dcdc1 = "/fragment@1/__overlay__/pmu/regulators/dcdca";
+		reg_dcdc2 = "/fragment@1/__overlay__/pmu/regulators/dcdcb";
+		reg_dcdc3 = "/fragment@1/__overlay__/pmu/regulators/dcdcc";
+		reg_dcdc4 = "/fragment@1/__overlay__/pmu/regulators/dcdcd";
+		reg_dcdc5 = "/fragment@1/__overlay__/pmu/regulators/dcdce";
+		reg_aldo1 = "/fragment@1/__overlay__/pmu/regulators/aldo1";
+		reg_aldo2 = "/fragment@1/__overlay__/pmu/regulators/aldo2";
+		reg_aldo3 = "/fragment@1/__overlay__/pmu/regulators/aldo3";
+		reg_bldo1 = "/fragment@1/__overlay__/pmu/regulators/bldo1";
+		reg_bldo2 = "/fragment@1/__overlay__/pmu/regulators/bldo2";
+		reg_bldo3 = "/fragment@1/__overlay__/pmu/regulators/bldo3";
+		reg_bldo4 = "/fragment@1/__overlay__/pmu/regulators/bldo4";
+		reg_cldo1 = "/fragment@1/__overlay__/pmu/regulators/cldo1";
+		reg_cldo2 = "/fragment@1/__overlay__/pmu/regulators/cldo2";
+		reg_cldo3 = "/fragment@1/__overlay__/pmu/regulators/cldo3";
+		reg_sw = "/fragment@1/__overlay__/pmu/regulators/sw";
+	};
+
+	__fixups__ {
+		twi5 = "/fragment@1:target:0";
+		cpu0 = "/fragment@2:target:0";
+	};
+
+	__local_fixups__ {
+
+		fragment@2 {
+
+			__overlay__ {
+				cpu-supply = <0x00>;
+			};
+		};
+	};
+};
