@@ -7,7 +7,7 @@
 #include "sun50iw9.dtsi"
 
 / {
-	model = "sun50iw9";
+	model = "Orange Pi Zero 3";
 	compatible = "allwinner,h616", "arm,sun50iw9p1";
 
 	chosen {
@@ -1084,29 +1084,28 @@
 };
 
 /*
- * usb_port_type: usb mode. 0-device, 1-host, 2-otg.
- * usb_detect_type: usb hotplug detect mode. 0-none, 1-vbus/id detect, 2-id/dpdm detect.
- * usb_detect_mode: 0-thread scan, 1-id gpio interrupt.
- * usb_wakeup_suspend: 0-SUPER_STANDBY, 1-USB_STANDBY.
+ *usb_port_type: usb mode. 0-device, 1-host, 2-otg.
+ *usb_detect_type: usb hotplug detect mode. 0-none, 1-vbus/id detect, 2-id/dpdm detect.
+ *usb_detect_mode: 0-thread scan, 1-id gpio interrupt.
+ *usb_id_gpio: gpio for id detect.
+ *usb_det_vbus_gpio: gpio for id detect. gpio or "axp_ctrl";
+ *usb_wakeup_suspend：0-SUPER_STANDBY, 1-USB_STANDBY.
  */
 &usbc0 {
-	compatible          = "allwinner,sunxi-otg-manager";
-	device_type         = "usbc0";
-	dr_mode             = "peripheral";        /* <- Required for ADB */
-	usb_port_type       = <0>;                 /* <- Device mode */
-	usb_detect_type     = <1>;
-	usb_detect_mode     = <0>;
-	usb_id_gpio;
-	usb_det_vbus_gpio;
-	usb_drv_vbus_gpio;
-	usb_regulator_io    = "nocare";
-	usb_wakeup_suspend  = <0>;
-	usb_luns            = <3>;
-	usb_serial_unique   = <0>;
-	usb_serial_number   = "20080411";
-	rndis_wceis         = <1>;
-	wakeup-source;
-	status              = "okay";
+	compatible		= "allwinner,sunxi-otg-manager";
+	device_type		= "usbc0";
+	dr_mode			= "peripheral"; 
+	usb_port_type		= <0x2>;  /* OTG mode */
+	usb_detect_type		= <0x1>;
+	usb_detect_mode		= <0x0>;
+	usb_id_gpio		= <&pio PH 4 GPIO_ACTIVE_HIGH>;
+	usb_det_vbus_gpio	= <&pio PH 5 GPIO_ACTIVE_HIGH>;
+	usb_regulator_io	= "nocare"; 
+	usb_wakeup_suspend	= <0x0>;
+	usb_luns		= <0x3>;
+	usb_serial_unique	= <0>;
+	usb_serial_number	= "20080411";
+	status			= "okay";
 };
 
 &ehci0 {
@@ -1120,14 +1119,13 @@
 };
 
 &usbc1 {
-	device_type         = "usbc1";
-	usb_port_type       = <1>;
-	usb_detect_type     = <1>;
-	usb_detect_mode     = <0>;
-	usb_host_init_state = <1>;
-	usb_regulator_io    = "nocare";
-	usb_wakeup_suspend  = <0>;
-	status              = "okay";
+	device_type		= "usbc1";
+	usb_port_type		= <0x1>;  /* Changed to host mode */
+	usb_detect_type		= <0x1>;
+	usb_detect_mode		= <0x0>;
+	usb_regulator_io	= "nocare";
+	usb_wakeup_suspend	= <0x0>;
+	status			= "okay";
 };
 
 &ehci1 {
@@ -1142,50 +1140,48 @@
 };
 
 &ohci1 {
-    drvvbus-supply = <&usb0_drvvbus>;
-    status = "okay";
+	drvvbus-supply		= <&usb0_drvvbus>;
+	status			= "okay";
 };
 
 &usbc2 {
-	device_type         = "usbc2";
-	usb_port_type       = <1>;
-	usb_detect_type     = <1>;
-	usb_detect_mode     = <0>;
-	usb_host_init_state = <1>;
-	usb_regulator_io    = "nocare";
-	usb_wakeup_suspend  = <0>;
-	status              = "okay";
+	device_type		= "usbc2";
+	usb_port_type		= <0x1>;  /* Changed to host mode */
+	usb_detect_type		= <0x1>;
+	usb_detect_mode		= <0x0>;
+	usb_regulator_io	= "nocare";
+	usb_wakeup_suspend	= <0x0>;
+	status			= "okay";
 };
 
 &ehci2 {
-    drvvbus-supply = <&usb0_drvvbus>;
-    status = "okay";
+	drvvbus-supply		= <&usb0_drvvbus>;
+	status			= "okay";
 };
 
 &ohci2 {
-    drvvbus-supply = <&usb0_drvvbus>;
-    status = "okay";
+	drvvbus-supply		= <&usb0_drvvbus>;
+	status			= "okay";
 };
 
 &usbc3 {
-	device_type         = "usbc3";
-	usb_port_type       = <1>;
-	usb_detect_type     = <1>;
-	usb_detect_mode     = <0>;
-	usb_host_init_state = <1>;
-	usb_regulator_io    = "nocare";
-	usb_wakeup_suspend  = <0>;
-	status              = "okay";
+	device_type		= "usbc3";
+	usb_port_type		= <0x1>;
+	usb_detect_type		= <0x1>;
+	usb_detect_mode		= <0x0>;
+	usb_regulator_io	= "nocare";
+	usb_wakeup_suspend	= <0x0>;
+	status			= "okay";
 };
 
 &ehci3 {
-    drvvbus-supply = <&usb0_drvvbus>;
-    status = "okay";
+	drvvbus-supply		= <&usb0_drvvbus>;
+	status			= "okay";
 };
 
 &ohci3 {
-    drvvbus-supply = <&usb0_drvvbus>;
-    status = "okay";
+	drvvbus-supply		= <&usb0_drvvbus>;
+	status			= "okay";
 };
 
 /* audio dirver module -> audio codec */
